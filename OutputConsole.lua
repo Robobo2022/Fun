@@ -335,153 +335,14 @@ local function BMRDXRL_fake_script() -- Idsfilling.Dragify
 end
 coroutine.wrap(BMRDXRL_fake_script)()
 
-PlayerList.Name = "PlayerList"
-PlayerList.Parent = CoreGui
-PlayerList.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Filling.Name = "Filling"
-Filling.Parent = PlayerList
-Filling.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Filling.Position = UDim2.new(0.00683454098, 0, 0.00812064949, 0)
-Filling.Size = UDim2.new(0, 261, 0, 855)
-
-UICorner5.CornerRadius = UDim.new(0, 6)
-UICorner5.Parent = Filling
-
-padsing.Name = "padsing"
-padsing.Parent = Filling
-padsing.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-padsing.Position = UDim2.new(0.0882275477, 0, 0.0638099611, 0)
-padsing.Size = UDim2.new(0, 212, 0, 785)
-
-UIListLayout2.Parent = ScrollingFrame
-
-UICorner_5.CornerRadius = UDim.new(0, 6)
-UICorner_5.Parent = padsing
-
-ScrollingFrame.Parent = padsing
-ScrollingFrame.Active = true
-ScrollingFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-ScrollingFrame.BorderColor3 = Color3.fromRGB(35, 35, 35)
-ScrollingFrame.Size = UDim2.new(0, 212, 0, 785)
-
-local Players = game:GetService("Players")
-for i, player in pairs(Players:GetPlayers()) do
-	local TextbuttonClone1 = TextButton1:Clone()
-	TextbuttonClone1.Parent = ScrollingFrame
-	TextbuttonClone1.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
-	TextbuttonClone1.BorderColor3 = Color3.fromRGB(49, 49, 49)
-	TextbuttonClone1.Size = UDim2.new(0, 212, 0, 50)
-	TextbuttonClone1.Text = player.Name..""
-	TextbuttonClone1.ZIndex = 2
-	TextbuttonClone1.Font = Enum.Font.SourceSansBold
-	TextbuttonClone1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextbuttonClone1.TextSize = 18.000
-	TextbuttonClone1.MouseButton1Click:Connect(function()
-		highlight.Parent = player.Character
-	end)
-end
-
-for i, player in pairs(Players:GetPlayers()) do
-	player.CharacterAdded:Connect(function()
-		local TextbuttonClone1 = TextButton1:Clone()
-		TextbuttonClone1.Parent = ScrollingFrame
-		TextbuttonClone1.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
-		TextbuttonClone1.BorderColor3 = Color3.fromRGB(49, 49, 49)
-		TextbuttonClone1.Size = UDim2.new(0, 212, 0, 50)
-		TextbuttonClone1.Text = player.Name..""
-		TextbuttonClone1.ZIndex = 2
-		TextbuttonClone1.Font = Enum.Font.SourceSansBold
-		TextbuttonClone1.TextColor3 = Color3.fromRGB(255, 255, 255)
-		TextbuttonClone1.TextSize = 18.000
-		TextbuttonClone1.MouseButton1Click:Connect(function()
-			highlight.Parent = player.Character
-		end)
-	end)
-end
-
-Title4.Name = "Title4"
-Title4.Parent = Filling
-Title4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title4.BackgroundTransparency = 1.000
-Title4.Position = UDim2.new(0.354396492, 0, 0.0354893431, 0)
-Title4.Size = UDim2.new(0, 75, 0, 25)
-Title4.Font = Enum.Font.GothamBold
-Title4.Text = "Player List"
-Title4.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title4.TextSize = 14.000
-Title4.TextXAlignment = Enum.TextXAlignment.Left
-
--- Scripts:
-
-local function DQVSVDW_fake_script() -- Filling.Dragify 
-	local script = Instance.new('LocalScript', Filling)
-
-	local UserInputService = game:GetService("UserInputService")
-	local runService = (game:GetService("RunService"));
-	
-	local gui = script.Parent
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	function Lerp(a, b, m)
-		return a + (b - a) * m
-	end;
-	
-	local lastMousePos
-	local lastGoalPos
-	local DRAG_SPEED = (10);
-	function Update(dt)
-		if not (startPos) then return end;
-		if not (dragging) and (lastGoalPos) then
-			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
-			return 
-		end;
-	
-		local delta = (lastMousePos - UserInputService:GetMouseLocation())
-		local xGoal = (startPos.X.Offset - delta.X);
-		local yGoal = (startPos.Y.Offset - delta.Y);
-		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
-		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
-	end;
-	
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-			lastMousePos = UserInputService:GetMouseLocation()
-	
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	
-	runService.Heartbeat:Connect(Update)
-end
-coroutine.wrap(DQVSVDW_fake_script)()
 
 Main.Visible = false
 Idsfilling.Visible = false
-Filling.Visible = false
 
 InputService.InputBegan:Connect(function(Input, Processed)
     if Input.KeyCode == Enum.KeyCode.F1 or (Input.KeyCode == Enum.KeyCode.Insert and (not Processed)) then
         Main.Visible = not Main.Visible
 		Idsfilling.Visible = not Idsfilling.Visible
-		Filling.Visible = not Filling.Visible
     end
 end)
 
@@ -489,7 +350,6 @@ InputService.InputBegan:Connect(function(Input)
 	if Input.KeyCode == Enum.KeyCode.Delete then
 		Main:Destroy()
 		Idsfilling:Destroy()
-		Filling:Destroy()
 	end
 end)
 	
