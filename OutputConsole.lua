@@ -37,15 +37,6 @@ local UICorner_3 = Instance.new("UICorner")
 local TextButton = Instance.new("TextButton")
 local Title1 = Instance.new("TextLabel")
 
-local PlayerList = Instance.new("ScreenGui")
-local Filling = Instance.new("Frame")
-local UICorner5 = Instance.new("UICorner")
-local padsing = Instance.new("Frame")
-local UIListLayout2 = Instance.new("UIListLayout")
-local UICorner_5 = Instance.new("UICorner")
-local TextButton1 = Instance.new("TextButton")
-local Title4 = Instance.new("TextLabel")
-local ScrollingFrame = Instance.new("ScrollingFrame")
 
 Logger.Name = "Logger"
 Logger.Parent = CoreGui
