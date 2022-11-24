@@ -1,8 +1,8 @@
--- Gui to Lua
--- Version: 3.2
+repeat wait()
+until game:IsLoaded()
 
--- Instances:
-
+local CoreGui = game:GetService('CoreGui')
+local LoginPage = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
 local Password = Instance.new("TextBox")
@@ -11,10 +11,14 @@ local LockIcon = Instance.new("ImageLabel")
 local GuestIcon = Instance.new("ImageLabel")
 local UICorner_3 = Instance.new("UICorner")
 
---Properties:
+local text = "Password"
+
+LoginPage.Name = "LoginPage"
+LoginPage.Parent = CoreGui
+LoginPage.ResetOnSpawn = false
 
 Main.Name = "Main"
-Main.Parent = game.StarterGui.LoginPage
+Main.Parent = LoginPage
 Main.BackgroundColor3 = Color3.fromRGB(186, 182, 203)
 Main.BackgroundTransparency = 0.250
 Main.Position = UDim2.new(0.398787886, 0, 0.253894091, 0)
@@ -58,9 +62,17 @@ GuestIcon.Image = "http://www.roblox.com/asset/?id=146330476"
 UICorner_3.CornerRadius = UDim.new(1, 10)
 UICorner_3.Parent = GuestIcon
 
--- Scripts:
+Password.FocusLost:Connect(function(EnterCheck)
+    if EnterCheck == true then
+        if Password.Text == text then
+            LoginPage:Destroy()
+        else
+            Password.Text = ""
+        end
+    end
+end)
 
-local function YQMDQU_fake_script() -- Main.Dragify 
+local function BFEATNM_fake_script() -- Main.Dragify 
 	local script = Instance.new('LocalScript', Main)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -117,4 +129,6 @@ local function YQMDQU_fake_script() -- Main.Dragify
 	
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(YQMDQU_fake_script)()
+coroutine.wrap(BFEATNM_fake_script)()
+
+
