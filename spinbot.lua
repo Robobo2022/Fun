@@ -2,32 +2,32 @@ getgenv().spinSpeed = 20
 local Spin = Instance.new("BodyAngularVelocity")
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
-	Name = "Rayfield Example Window",
-	LoadingTitle = "Rayfield Interface Suite",
-	LoadingSubtitle = "by Sirius",
+	Name = "Spinbot",
+	LoadingTitle = "Spinbot (op)",
+	LoadingSubtitle = "by hydra#8270",
 	ConfigurationSaving = {
 		Enabled = true,
-		FolderName = nil, -- Create a custom folder for your hub/game
+		FolderName = nil, 
 		FileName = "Big Hub"
 	},
         Discord = {
         	Enabled = false,
-        	Invite = "sirius", -- The Discord invite code, do not include discord.gg/
-        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        	Invite = "sirius", 
+        	RememberJoins = true 
         },
-	KeySystem = false, -- Set this to true to use our key system
+	KeySystem = false,
 	KeySettings = {
 		Title = "Sirius Hub",
 		Subtitle = "Key System",
 		Note = "Join the discord (discord.gg/sirius)",
 		FileName = "SiriusKey",
 		SaveKey = true,
-		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		GrabKeyFromSite = false,
 		Key = "Hello"
 	}
 })
 
-local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Tab Example", 4483362458) 
 
 function spin()
 	local Spin = Instance.new("BodyAngularVelocity")
