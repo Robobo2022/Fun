@@ -78,7 +78,7 @@ local Toggle = T1:CreateToggle({
 
 local Slider = T2:CreateSlider({
 	Name = "Bhop Delay",
-	Range = {0.6, 50},
+	Range = {1, 50},
 	Increment = 0.1,
 	Suffix = "Delay",
 	CurrentValue = 1,
