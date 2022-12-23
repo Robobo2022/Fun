@@ -40,9 +40,6 @@ task.spawn(function()
                     local tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time), {CFrame = CFrameEnd})
                     tween:Play()
                     tween.Completed:Wait()
-                    if AutoFarm == false then
-                        tween:Cancel()
-                    end
                 end
             end
         end
