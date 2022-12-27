@@ -1,49 +1,36 @@
-local filename = "Whitelist.txt"
-local json
-local HttpService = game:GetService("HttpService")
-local Http_Request = request;
-local Body = Http_Request({Url = 'https://httpbin.org/get'; Method = 'GET'}).Body;
-local Decoded = game:GetService('HttpService'):JSONDecode(Body)
-local GetHwid = Decoded.headers["Sw-Fingerprint"];
-local Time = os.clock()
+--Beemo's simple whitelist
+_G.Key = "Key1"
 
-_G.Settings = {
-    ["key"] = _G.Key,
-    ["site"] = "noob",
-    ["text"] = "Youre not whitelisted please contact our staff/owner";
+local keys = {
+    "Key1",
+    "Key2",
+    "key3"
 }
-local abc = (_G.Settings.site .. _G.Settings.key)
-if abc == "true" then
-    print("[Whitelist] Loading...")
-    wait(0.2)
-    print("[Whitelist] ".. identifyexecutor())
-    wait(0.2)
-    
-    print("[Whitelist] Checking Whitelist...")
-    
-    if (writefile) then
-        json = HttpService:JSONEncode({["hwid"] = GetHwid})
-        writefile(filename, json)
+
+local counter = 1
+local keyCheck
+for i,v in pairs(keys) do
+    if counter == #keys then
+    --not whitelisted!
+    keys = ""
+    game.Players.LocalPlayer:Kick("Not a valid key!")
     else
-        json = readfile(filename)
+        if v == _G.Key then
+            --Whitelisted!
+            print("Successfully whitelisted!")
+            keyCheck = _G.Key
+            keys = ""
+        else
+            counter = counter +1
+        end
     end
-    
-    print("[Whitelist] Took: " .. math.round(os.clock() - Time) .. "s")
-    
-    if (not json) then
-        print("[Whitelist] Failed to load whitelist.")
-        return
-    end
-    
-    if (not HttpService:JSONDecode(json)) then
-        print("[Whitelist] Failed to load whitelist.")
-        return
-    end
-elseif abc == "false" then
-game.Players.LocalPlayer:Kick(_G.Settings.text)
-else
-    print("noob")
 end
 
-
-
+while true do
+    if _G.Key == keyCheck then
+        --Not spoofed
+    else
+        game.Players.LocalPlayer:Kick("Do not try and spoof your key!")
+    end
+    wait()
+end
