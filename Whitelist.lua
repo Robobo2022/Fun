@@ -1,4 +1,3 @@
---Beemo's simple whitelist
 _G.Key = "Key1"
 
 local keys = {
