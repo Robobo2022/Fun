@@ -5,7 +5,6 @@ local Http_Request = request;
 local Body = Http_Request({Url = 'https://httpbin.org/get'; Method = 'GET'}).Body;
 local Decoded = game:GetService('HttpService'):JSONDecode(Body)
 local GetHwid = Decoded.headers["Sw-Fingerprint"];
-local GAMENAME = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 local Time = os.clock()
 
 _G.Settings = {
@@ -13,7 +12,7 @@ _G.Settings = {
     ["site"] = "noob",
     ["text"] = "Youre not whitelisted please contact our staff/owner";
 }
-local abc = game:HttpGet(_G.Settings.site .. _G.Settings.key)
+local abc = (_G.Settings.site .. _G.Settings.key)
 if abc == "true" then
     print("[Whitelist] Loading...")
     wait(0.2)
