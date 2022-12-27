@@ -10,7 +10,7 @@ local Time = os.clock()
 
 _G.Settings = {
     ["key"] = _G.Key,
-    ["site"] = "https://yoursite.com/whitelist.php?key=",
+    ["site"] = "noob",
     ["text"] = "Youre not whitelisted please contact our staff/owner";
 }
 local abc = game:HttpGet(_G.Settings.site .. _G.Settings.key)
