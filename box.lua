@@ -127,6 +127,9 @@ local Button = T2:CreateButton({
 local Button = T2:CreateButton({
 	Name = "unarrest",
 	Callback = function()
+        for i,v in pairs(game:GetService("Workspace").Characters[localname].addons:getchildren()) do
+            v:Destroy()
+        end
         game:GetService("Workspace").Characters[localname].Arrested.Value = false
 	end,
 })
