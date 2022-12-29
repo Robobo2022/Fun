@@ -88,8 +88,8 @@ OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
     local args = {...}
     local method = getnamecallmethod()
     if Self == remot and method == "FireServer" and getgenv().SilentAim.Enabled == true then
-        args[2][1] = Vector3.new(closestPlayer.Character.Head)
-        return Self.FireServer(Self,unpack(args))
+        args[2][1] = Vector3.new(getClosestPlayerToCursor().Character.Head)
+        return OldNamecall(Self,unpack(args))
     end
     return OldNamecall(Self, ...)
 end)
